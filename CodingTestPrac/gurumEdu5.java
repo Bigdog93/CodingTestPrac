@@ -9,6 +9,7 @@ public class gurumEdu5 {
                 answer = Math.max(answer, price - tmp);
             tmp = Math.min(tmp, price);
         }
+        
         return answer;
     }
     // 아래는 테스트케이스 출력을 해보기 위한 main 메소드입니다.
