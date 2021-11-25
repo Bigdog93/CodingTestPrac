@@ -5,6 +5,7 @@ public class Prac1 {
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
         solution(num);
+        sc.close();
     }
     static void solution(int num) {
         if(num == 1) {
