@@ -6,7 +6,8 @@ public class Prac2 {
         int numX = sc.nextInt();
 
         solution(numX);
-
+        
+        sc.close();
     }
     static void solution(int numx) {
         int count = 1;
