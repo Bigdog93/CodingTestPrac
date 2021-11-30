@@ -12,13 +12,7 @@ public class Prac5 {
         for(int i = 0; i < testCase; i++) {
             k[i] = Integer.parseInt(br.readLine());
             n[i] = Integer.parseInt(br.readLine());
-            int sum = 0;
-            for(int j = 0; j < k[i]; j++) {
-                for(int z = 0; z < n[i]; z++) {
-                    sum += z + 1;
-                }
-            }
-            answer[i] = sum;
+            answer[i] = selfSol(k[i], n[i]);
         }
         for(int i = 0; i < testCase; i++) {
             System.out.println(answer[i]);
@@ -27,10 +21,10 @@ public class Prac5 {
 
     public static int selfSol(int k, int n) {
         if(k == 0) return n;
-        for(int i = 0; i < k; i++) {
-            for(int j = 0; j < n; j++) {
-                
-            }
+        int sum = 0;
+        for(int j = 0; j < n; j++) {
+            sum += selfSol(k - 1, j + 1);
         }
+        return sum;
     }
 }
