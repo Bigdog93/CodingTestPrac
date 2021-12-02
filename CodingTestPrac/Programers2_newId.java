@@ -18,41 +18,41 @@ public class Programers2_newId {
         String new_id = sol.solution(sc.nextLine());
         System.out.println(new_id);
     }
-}
-class Solution {
-    public String solution(String new_id) {
-        // 1 단계
-        new_id = new_id.toLowerCase();
-        // 2 단계
-        // new_id = new_id.replaceAll("[^a-z0-9-_.]", "");
-        new_id = new_id.replaceAll("[^a-z\\d\\-_.]*", "");
-        //3 단계
-        // String temp = "";
-        // for(int i = 0; i < new_id.length(); i++) {
-        //     if(i < new_id.length() - 1 && new_id.charAt(i) == '.' && new_id.charAt(i + 1) == '.') continue;
-        //     temp += new_id.charAt(i);
-        // }
-        // new_id = temp;
-        new_id = new_id.replaceAll("\\.{2,}", ".");
-        // 4 단계
-        // if(new_id.indexOf(".") == 0) new_id = new_id.substring(1);
-        // if(new_id.indexOf(".") != -1 && new_id.indexOf(".") == new_id.length() - 1) new_id = new_id.substring(0, new_id.length() - 1);
-        new_id = new_id.replaceAll("^[.]|[.]$", "");
-        // 5 단계
-        if(new_id.equals("")) new_id = "a";
-        // 6 단계
-        if(new_id.length() > 15) {
-            new_id = new_id.substring(0, 15);
-            // if(new_id.indexOf(".") == new_id.length() - 1) new_id = new_id.substring(0, new_id.length() - 1);
-            new_id = new_id.replaceAll("[.]$", "");
-        }
-        // 7 단계
-        if(new_id.length() < 3) {
-            while(new_id.length() < 3) {
-                new_id += new_id.charAt(new_id.length() - 1);
+    static class Solution {
+        public String solution(String new_id) {
+            // 1 단계
+            new_id = new_id.toLowerCase();
+            // 2 단계
+            // new_id = new_id.replaceAll("[^a-z0-9-_.]", "");
+            new_id = new_id.replaceAll("[^a-z\\d\\-_.]*", "");
+            //3 단계
+            // String temp = "";
+            // for(int i = 0; i < new_id.length(); i++) {
+            //     if(i < new_id.length() - 1 && new_id.charAt(i) == '.' && new_id.charAt(i + 1) == '.') continue;
+            //     temp += new_id.charAt(i);
+            // }
+            // new_id = temp;
+            new_id = new_id.replaceAll("\\.{2,}", ".");
+            // 4 단계
+            // if(new_id.indexOf(".") == 0) new_id = new_id.substring(1);
+            // if(new_id.indexOf(".") != -1 && new_id.indexOf(".") == new_id.length() - 1) new_id = new_id.substring(0, new_id.length() - 1);
+            new_id = new_id.replaceAll("^[.]|[.]$", "");
+            // 5 단계
+            if(new_id.equals("")) new_id = "a";
+            // 6 단계
+            if(new_id.length() > 15) {
+                new_id = new_id.substring(0, 15);
+                // if(new_id.indexOf(".") == new_id.length() - 1) new_id = new_id.substring(0, new_id.length() - 1);
+                new_id = new_id.replaceAll("[.]$", "");
             }
+            // 7 단계
+            if(new_id.length() < 3) {
+                while(new_id.length() < 3) {
+                    new_id += new_id.charAt(new_id.length() - 1);
+                }
+            }
+            String answer = new_id;
+            return answer;
         }
-        String answer = new_id;
-        return answer;
     }
 }
