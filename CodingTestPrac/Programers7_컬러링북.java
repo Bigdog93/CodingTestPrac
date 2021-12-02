@@ -23,6 +23,7 @@ public class Programers7_컬러링북 {
     static class Solution {
         int[] xmov = {-1, 0, 1, 0};
         int[] ymov = {0, 1, 0, -1};
+        int cnt = 0;
         public int[] solution(int m, int n, int[][] picture) {
             int numberOfArea = 0;
             int maxSizeOfOneArea = 0;
@@ -31,31 +32,30 @@ public class Programers7_컬러링북 {
             boolean[][] visited = new boolean[m][n];
             for(int i = 0; i < m; i++) {
                 for(int j = 0; j < n; j++) {
+                    cnt = 0;
                     int sizeOfArea = dfs(visited, picture, i, j);
                     if(sizeOfArea > 0) {
                         numberOfArea++;
                         maxSizeOfOneArea = Math.max(maxSizeOfOneArea, sizeOfArea);
                     }
-
                 }
             }
-
             answer[0] = numberOfArea;
             answer[1] = maxSizeOfOneArea;
             return answer;
         }
         public int dfs(boolean[][] visited, int[][] picture, int x, int y) {
-            if(visited[x][y] == true) return 0;
-            int area = 1;
+            if(visited[x][y] || picture[x][y] == 0) return 0;
             visited[x][y] = true;
+            cnt++;
             int currentColor = picture[x][y];
             for(int i = 0; i < 4; i++) {
-                if(x + xmov[i] > 0 && x + xmov[i] < picture.length && y + ymov[i] > 0 && y + ymov[i] < picture[0].length && picture[x + xmov[i]][y + ymov[i]] == currentColor) {
-                    area += dfs(visited, picture, x + xmov[i], y + ymov[i]);
+                if(x + xmov[i] >= 0 && x + xmov[i] < picture.length && y + ymov[i] >= 0 && y + ymov[i] < picture[0].length 
+                    && picture[x + xmov[i]][y + ymov[i]] == currentColor) {
+                    dfs(visited, picture, x + xmov[i], y + ymov[i]);
                 }
             }
-
-            return area;
+            return cnt;
         }
     }
 }
