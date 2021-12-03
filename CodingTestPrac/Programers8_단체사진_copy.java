@@ -28,24 +28,68 @@ public class Programers8_단체사진_copy {
             output[i] = sol.solution(nArr[i], strArr[i]);
             System.out.println(output[i]);
         }
+
         
     }
     
     static class Solution {
+        static char[][] cond;
+        static int n;
+        static int cnt = 0;
         public int solution(int n, String[] data) {
+            cnt = 0;
+            this.n = n;
+            cond = new char[n][4];
             int answer = 0;
             char[] friends = {'A', 'C', 'F', 'J', 'M', 'N', 'R', 'T'};
-            answer = factorial(friends.length);
             for(int i = 0; i < n; i++) {
-                
+                cond[i][0] = data[i].charAt(0);
+                cond[i][1] = data[i].charAt(2);
+                cond[i][2] = data[i].charAt(3);
+                cond[i][3] = data[i].charAt(4);
             }
+            permutation(friends, 0);
+            answer = cnt;
             return answer;
         }
-        
+        static boolean isright(String str) {
+            for(int i = 0; i < n; i++) {
+                int dist = Math.abs(str.indexOf(cond[i][0]) - str.indexOf(cond[i][1])) - 1;
+                int rdist = cond[i][3] - '0';
+                switch (cond[i][2]) {
+                    case '=':
+                        if(dist != rdist) return false;
+                        break;
+                    case '<':
+                        if(dist >= rdist) return false;
+                        break;
+                    case '>':
+                        if(dist <= rdist) return false;
+                }
+            }
+            return true;
+
+        }
+        static void permutation(char[] arr, int depth) {
+            if(depth == arr.length) {
+                StringBuilder str = new StringBuilder();
+                for(int i = 0; i < arr.length; i++) {
+                    str.append(arr[i]);
+                }
+                String res = str.toString();
+                if(isright(res)) cnt++;
+            }
+            for(int i = depth; i < arr.length; i++) {
+                swap(arr, depth, i);
+                permutation(arr, depth + 1);
+                swap(arr, depth, i);
+            }
+        }
+        static void swap(char[] arr, int pos1, int pos2) {
+            char temp = arr[pos1];
+            arr[pos1] = arr[pos2];
+            arr[pos2] = temp;
+        }
     }
-    public static int factorial(int N) {
-		if(N <= 1) return 1;	// 재귀 종료조건
-		return N * factorial(N - 1);		
-	}
     
 }

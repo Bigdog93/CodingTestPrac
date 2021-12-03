@@ -34,7 +34,7 @@ public class Programers8_단체사진 {
     static class Solution {
         static int cnt = 0;
         static String[] data;
-        StringBuffer friends = new StringBuffer("ACFJMNRT");
+        StringBuilder friends = new StringBuilder("ACFJMNRT");
         public int solution(int n, String[] data) {
             cnt = 0;
             int answer = 0;
@@ -44,7 +44,7 @@ public class Programers8_단체사진 {
             answer = cnt;
             return answer;
         }
-        private static void doPerm(StringBuffer str, int index){
+        private static void doPerm(StringBuilder str, int index){
             if(index == str.length()) {
                 boolean cond = true;
                 for(int i = 0; i < data.length; i++) {
@@ -77,7 +77,7 @@ public class Programers8_단체사진 {
                 }
             }
         }
-        private  static void swap(StringBuffer str, int pos1, int pos2){
+        private  static void swap(StringBuilder str, int pos1, int pos2){
             char t1 = str.charAt(pos1);
             str.setCharAt(pos1, str.charAt(pos2));
             str.setCharAt(pos2, t1);
