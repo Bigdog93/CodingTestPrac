@@ -47,23 +47,19 @@ public class Programers15_체육복 {
             for(int i = 0; i < reserve.length; i++) {
                 getter[reserve[i] - 1]++;
             }
-            for(int i = 0; i < reserve.length; i++) {
-                if(getter[reserve[i] - 1] == 2) {
-                    if(reserve[i] > 1 && getter[reserve[i] - 2] == 0) {
-                        getter[reserve[i] - 2]++;
-                    }else if(reserve[i] < n && getter[reserve[i]] == 0) {
-                        getter[reserve[i]]++;
-                    }
+            for(int i = 0; i < getter.length - 1; i++) {
+                if(getter[i] == 0 && getter[i + 1] == 2) {
+                    getter[i] = 1;
+                    getter[i + 1] = 1;
+                }else if(getter[i] == 2 && getter[i + 1] == 0) {
+                    getter[i]--;
+                    getter[i + 1]++;
                 }
             }
             for(int i = 0; i < n; i++) {
                 if(getter[i] > 0) answer++;
             }
             return answer;
-        }
-        public static boolean bound(int i, int n) {
-            if(i > 0 && i + 1 < n) return true;
-            return false;
         }
     }
 }
