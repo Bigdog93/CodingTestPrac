@@ -20,7 +20,7 @@ public class Programers17_타겟넘버 {
     public static void main(String[] args) {
         Solution sol = new Solution();
         int[] inputNumbers = {1, 1, 1, 1, 1};
-        int inputTarget = -5;
+        int inputTarget = 3;
         int output = sol.solution(inputNumbers, inputTarget);
         System.out.println(output);
     }
