@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 /*
 문제 설명
@@ -53,7 +50,7 @@ public class Programers16_더맵게 {
     static class Solution {
         public int solution(int[] scoville, int K) {
             int answer = 0;
-            PriorityQueue<Integer> scovilleQueue = new PriorityQueue<>();
+            Queue<Integer> scovilleQueue = new PriorityQueue<>();
             for(int i : scoville) {
                 scovilleQueue.add(i);
             }
